@@ -2,10 +2,10 @@ name = input("What is your name?: ")
 
 print("Hello there " + name + ". I hope you are having a nice day!")
 
-'''Have to convert input from string'''
+#Have to convert input from string
 
 age = int(input("How old are you?: "))
-birthyear = 2023-age
+birthyear = 2024-age
 
-'''Have to convert back to string to concatenate'''
+#Have to convert back to string to concatenate'''
 print("Your birthyear is " + str(birthyear))
