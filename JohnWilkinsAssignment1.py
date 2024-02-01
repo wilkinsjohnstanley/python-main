@@ -1,4 +1,11 @@
+'''
+John Wilkins
+Fundamentals of Computer Programming
+Dr. Jose Martinez
+Assignment 1
+February 1st, 2024
 
+'''
 
 F = float(input("Enter the future value that you want in the account: \n"))
 r = float(input("Enter the annual interest rate: \n"))
