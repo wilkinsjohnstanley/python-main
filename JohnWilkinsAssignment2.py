@@ -34,4 +34,4 @@ else:
     print(f"{fahrenheit:0.2f}*--------->{celsius:0.2f}*C")
 print('---------------------------------')
 
-user_menu = input('Do you want to continue making temperature tables?')
+user_menu = input('Do you want to continue making temperature tables?\n Enter y to continue, n to stop: \n')
