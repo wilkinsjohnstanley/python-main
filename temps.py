@@ -1,14 +1,12 @@
+
 '''
-Create a temperature table
-The user must input the starting and ending temperatures.
-Convert from Fahrenheit to Celcius.
-
-Ask the user if they want to continue making temperature tables.
-while loop duh
-control variable = ?
+John Wilkins
+Fundamentals of Computer Programming
+Dr. Jose Martinez
+Assignment 2 Program 1
+February 8th, 2024
 
 
-for-loop: best option, because we know the start/end.
 '''
 #control variable
 user_menu = 'y'
