@@ -4,7 +4,6 @@ area_circle_choice=1
 circumference_choice=2
 exit_program=3
 #define functions
-
 #function for the area of a circle
 def area_circle():
     radius = float(input('Enter the radius of the circle: '))
@@ -28,13 +27,25 @@ def show_menu():
     print()
 
 def main():
-    #display the menu
-    show_menu()
+    
+   
 
     #control variable
-    option = int(input('Enter your choice: '))
+    option = 0
+    
+
+    while option !=exit_program:
+        show_menu()
+        option = int(input('Enter your choice: '))     
     #option #1 => area of the circle
-    if option == area_circle_choice:
-        print('The area of the circle is ', area_circle())
-    if option == circumference_choice:
-        print('The circumference of the circle is ', circumference())  
+        if option == area_circle_choice:
+            print('The area of the circle is ', area_circle())
+        if option == circumference_choice:
+            print('The circumference of the circle is ', circumference())
+        elif option == exit_program:
+            print('The program is closed.') 
+        #need an else as the end of the elif structure
+        
+
+        #call the main function
+main()
