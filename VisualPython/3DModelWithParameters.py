@@ -6,6 +6,7 @@ wallThickness=.1
 roomWidth=10
 roomDepth=10
 roomHeight=20
+upAndDownBounce=roomHeight/2
 
 #vector(x,y,z)
 floor=box(pos=vector(0,-roomHeight/2,0),color=color.white,size=vector(roomWidth,wallThickness,roomDepth))
@@ -17,9 +18,9 @@ marble=sphere(radius=marbleRadius, color=color.blue)
 deltaX=.1
 xPos=0
 while True:
-    rate(1)
+    rate(50)
     xPos=xPos+deltaX
-    if (xPos>roomWidth-1 or xPos<-roomWidth+1):
+    if (xPos>upAndDownBounce-1 or xPos<-upAndDownBounce+1):
         deltaX=deltaX*(-1)
     
     marble.pos=vector(0,xPos,0)
