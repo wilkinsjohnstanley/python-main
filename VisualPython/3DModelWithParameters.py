@@ -17,9 +17,9 @@ marble=sphere(radius=marbleRadius, color=color.blue)
 deltaX=.1
 xPos=0
 while True:
-    rate(10)
+    rate(1)
     xPos=xPos+deltaX
-    if (xPos>roomWidth-1 or xPos<-roomWidth-1):
+    if (xPos>roomWidth-1 or xPos<-roomWidth+1):
         deltaX=deltaX*(-1)
     
     marble.pos=vector(0,xPos,0)
