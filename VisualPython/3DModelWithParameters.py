@@ -8,11 +8,11 @@ roomDepth=10
 roomHeight=10
 
 #vector(x,y,z)
-floor=box(pos=vector(0,-5,0),color=color.white,size=vector(roomWidth,wallThickness,roomDepth))
-ceiling=box(pos=vector(0,5,0),color=color.white,size=vector(roomWidth,wallThickness,roomDepth))
-backWall=box(pos=vector(0,0,-5),color=color.white,size=vector(roomWidth,roomHeight,wallThickness))
-leftWall=box(pos=vector(-5,0,0),color=color.white,size=vector(wallThickness,roomHeight, roomDepth))
-rightWall=box(pos=vector(5, 0, 0),color=color.white,size=vector(wallThickness,roomHeight, roomDepth))
+floor=box(pos=vector(0,-roomHeight/2,0),color=color.white,size=vector(roomWidth,wallThickness,roomDepth))
+ceiling=box(pos=vector(0,roomHeight/2,0),color=color.white,size=vector(roomWidth,wallThickness,roomDepth))
+backWall=box(pos=vector(0,0,-roomDepth/2),color=color.white,size=vector(roomWidth,roomHeight,wallThickness))
+leftWall=box(pos=vector(-roomWidth/2,0,0),color=color.white,size=vector(wallThickness,roomHeight, roomDepth))
+rightWall=box(pos=vector(roomWidth/2-, 0, 0),color=color.white,size=vector(wallThickness,roomHeight, roomDepth))
 marble=sphere(radius=marbleRadius, color=color.blue)
 deltaX=.1
 xPos=0
