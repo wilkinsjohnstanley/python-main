@@ -25,3 +25,6 @@ while True:
     if (XRME>=RWE or XLME<LWE):
         deltaX=deltaX*(-1)
     marble.pos=vector(xPos,0,0)
+
+
+    #Homework is to make the ball move in three dimensions
