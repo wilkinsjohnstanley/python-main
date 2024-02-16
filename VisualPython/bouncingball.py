@@ -14,8 +14,14 @@ marble=sphere(radius=mRadius,color=color.red)
 deltaX=.1
 xPos=0
 while True:
-    rate(10)
+    rate(50)
     xPos=xPos+deltaX
-    if (xPos>roomWidth/2 or xPos<-roomWidth/2):
+    #x right marble edge
+    XRME=xPos+mRadius
+    #right wall edgeS
+    RWE=roomWidth/2-wallThickness/2
+    LWE=-roomWidth/2+wallThickness/2
+    XLME=xPos-mRadius
+    if (XRME>=RWE or XLME<LWE):
         deltaX=deltaX*(-1)
     marble.pos=vector(xPos,0,0)
