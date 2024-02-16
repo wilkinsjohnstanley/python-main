@@ -3,7 +3,7 @@ from time import *
 #no constants, use variables
 marbleRadius=.75
 wallThickness=.1
-roomWidth=10
+roomWidth=15
 roomDepth=10
 roomHeight=10
 
@@ -12,7 +12,7 @@ floor=box(pos=vector(0,-roomHeight/2,0),color=color.white,size=vector(roomWidth,
 ceiling=box(pos=vector(0,roomHeight/2,0),color=color.white,size=vector(roomWidth,wallThickness,roomDepth))
 backWall=box(pos=vector(0,0,-roomDepth/2),color=color.white,size=vector(roomWidth,roomHeight,wallThickness))
 leftWall=box(pos=vector(-roomWidth/2,0,0),color=color.white,size=vector(wallThickness,roomHeight, roomDepth))
-rightWall=box(pos=vector(roomWidth/2-, 0, 0),color=color.white,size=vector(wallThickness,roomHeight, roomDepth))
+rightWall=box(pos=vector(roomWidth/2, 0, 0),color=color.white,size=vector(wallThickness,roomHeight, roomDepth))
 marble=sphere(radius=marbleRadius, color=color.blue)
 deltaX=.1
 xPos=0
