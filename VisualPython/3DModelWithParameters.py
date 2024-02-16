@@ -3,9 +3,9 @@ from time import *
 #no constants, use variables
 marbleRadius=.75
 wallThickness=.1
-roomWidth=15
+roomWidth=10
 roomDepth=10
-roomHeight=10
+roomHeight=20
 
 #vector(x,y,z)
 floor=box(pos=vector(0,-roomHeight/2,0),color=color.white,size=vector(roomWidth,wallThickness,roomDepth))
@@ -19,7 +19,7 @@ xPos=0
 while True:
     rate(10)
     xPos=xPos+deltaX
-    if (xPos>4 or xPos<-4):
+    if (xPos>roomWidth-1 or xPos<-roomWidth-1):
         deltaX=deltaX*(-1)
     
     marble.pos=vector(0,xPos,0)
