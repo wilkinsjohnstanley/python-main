@@ -9,4 +9,11 @@ while True:
     while(arduinoData.inWaiting()==0):
         pass
     dataPacket=arduinoData.readline()
+
+    #b'Count: 1\r\n'
+
+    #remove the b
+    dataPacket=str(dataPacket,'utf-8')
+    #remove the giant spacing from Arduino's println 
+    dataPacket=dataPacket.strip('\r\n')
     print(dataPacket)
