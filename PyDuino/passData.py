@@ -16,4 +16,8 @@ while True:
     dataPacket=str(dataPacket,'utf-8')
     #remove the giant spacing from Arduino's println 
     dataPacket=dataPacket.strip('\r\n')
-    print(dataPacket)
+
+    #unpack the data
+    splitPacket=dataPacket.split(",")
+    #now we have our data in the form of an array!!!
+    print(splitPacket)
