@@ -20,4 +20,14 @@ while True:
     #unpack the data
     splitPacket=dataPacket.split(",")
     #now we have our data in the form of an array!!!
-    print(splitPacket)
+    #print(splitPacket)
+
+    #take the first element of the array, convert to a float, and store it in x
+    x=float(splitPacket[0])
+    #same but y
+    y=float(splitPacket[0])
+    #same but z
+    z=float(splitPacket[0])
+    print(x, y, z)
+
+  
