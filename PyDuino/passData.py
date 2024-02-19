@@ -25,9 +25,9 @@ while True:
     #take the first element of the array, convert to a float, and store it in x
     x=float(splitPacket[0])
     #same but y
-    y=float(splitPacket[0])
+    y=float(splitPacket[1])
     #same but z
-    z=float(splitPacket[0])
+    z=float(splitPacket[2])
     print(x, y, z)
 
   
