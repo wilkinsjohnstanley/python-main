@@ -23,11 +23,11 @@ while True:
     #print(splitPacket)
 
     #take the first element of the array, convert to a float, and store it in x
-    x=float(splitPacket[0])
+    x=str(splitPacket[0])
     #same but y
-    y=float(splitPacket[1])
+    y=str(splitPacket[1])
     #same but z
-    z=float(splitPacket[2])
-    print(x, y, z)
+    #z=str(splitPacket[2])
+    print(x, y)
 
   
