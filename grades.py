@@ -1,5 +1,7 @@
 grades=[]
 average=0
+
+#main code stuff
 size=int(input("How many grades do you have?"))
 #get grades
 for grade in range(size):
