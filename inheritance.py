@@ -5,10 +5,21 @@ class Automobile:
         self.auto_make=make
         self.auto_year=year
         self.auto_price=price
-
-
-
-
+    #setters
+    def set_make(self, make):
+        self.auto_make=make
+    def set_year(self, year):
+        self.auto_year=year
+    def set_price(self, price):
+        self.auto_price=price
+    #getters/accessors return stuff
+    def get_make(self, make):
+        return self.auto_make
+    def get_year(self, year):
+        return self.auto_year
+    def sget_price(self, price):
+        return self.auto_price
+    
 
 
 class Car(Automobile):
