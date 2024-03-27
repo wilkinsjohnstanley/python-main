@@ -134,8 +134,8 @@ def main():
                     price=int(input('Enter the price: $'))
                     doors=int(input('Enter the number of doors: '))
 
-                    car4=Car(make, year, price, doors)
-                    automobiles.append(car4)
+                    car=Car(make, year, price, doors)
+                    automobiles.append(car)
                   
                     print(f"New car successfully added to the inventory.")
 
@@ -145,8 +145,8 @@ def main():
                     price=int(input('Enter the price: $'))
                     drive_type=int(input('Enter the drive type(4WD, FWD, RWD): '))
 
-                    truck4=Truck(make, year, price, cap)
-                    automobiles.append(truck4)
+                    truck=Truck(make, year, price, cap)
+                    automobiles.append(truck)
                     
                     print(f"New truck successfully added to the inventory.")
 
@@ -156,8 +156,8 @@ def main():
                     price=int(input('Enter the price: $'))
                     cap=int(input('Enter the passenger capacity: '))
 
-                    suv4=SUV(make, year, price, cap)
-                    automobiles.append(suv4)
+                    suv=SUV(make, year, price, cap)
+                    automobiles.append(suv)
                     
                     print(f"New SUV successfully added to the inventory.")
                     for auto in automobiles:
