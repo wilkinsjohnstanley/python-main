@@ -134,7 +134,7 @@ def main():
                     car=Car(make, year, price, doors)
                     automobiles.append(car)
                   
-                    print(f"New car successfully added to the inventory.")
+                    print("New car successfully added to the inventory.")
 
                 elif(answer2==2):
                     make=input('Enter the manufacturer: ')
