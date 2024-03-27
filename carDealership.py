@@ -62,7 +62,7 @@ def show_menu():
     print('\t Menu')
     print('\t Select an option: ')
     print('\t 1. Browse all cars')
-    print('\t 2. Add/Remove a new car')
+    print('\t 2. Add/Remove a car')
     print('\t 3. Filter results')
     print('\t 4. Exit the program')
     print()
@@ -131,7 +131,7 @@ def main():
 
                     car4=Car(make, year, price, doors)
                     automobiles.append(car4)
-                    time.sleep(2) #two second delay 
+                    time.sleep(1) #one second delay 
                     print(f"New car successfully added to the inventory.")
 
                 elif(answer==2):
@@ -142,7 +142,7 @@ def main():
 
                     truck4=Truck(make, year, price, cap)
                     automobiles.append(truck4)
-                    time.sleep(2) #two second delay 
+                    time.sleep(1) #one second delay 
                     print(f"New truck successfully added to the inventory.")
 
                 elif(answer==3):
@@ -153,22 +153,30 @@ def main():
 
                     suv4=SUV(make, year, price, cap)
                     automobiles.append(suv4)
-                    time.sleep(2) #two second delay 
+                    time.sleep(1) #one second delay 
                     print(f"New SUV successfully added to the inventory.")
+                    for auto in automobiles:
+                        auto.display_info()
                 else:
                     print("Option unavailable: you have been returned to the main menu. ")
                     
             elif(answer==2):
-                delete_make=input('Enter manufacturer: ')
-                delete_year=input('Enter model year: ')
-                for auto in automobiles:
-                    if(auto.auto_make==delete_make and auto.auto_year==delete_year):
-                        automobiles.remove(auto)
-                        time.sleep(2)
-                        print(f"You have successfully removed {auto} from the inventory. ")
-                    else:
-                        time.sleep(2)
-                        print("That car isn't in our inventory: you have been returned to the main menu")
+                if automobiles:
+                    print("Current cars:")
+                for i, auto in enumerate(automobiles):
+                    print(f"{i + 1}. {auto.auto_year} {auto.auto_make} {auto.auto_price}")
+
+                index = int(input("Enter the index of the car to remove: ")) - 1
+                if 0 <= index < len(automobiles):
+                    del automobiles[index]
+                    time.sleep(1)
+                    print("Car removed successfully!")
+                    for auto in automobiles:
+                        auto.display_info()
+                else:
+                    print("Invalid index!")
+            else:
+                print("No cars to remove!")
                         
 
                         
@@ -181,6 +189,8 @@ def main():
                     automobiles.sort(key=lambda auto: auto.auto_year)
                     for auto in automobiles:
                         auto.display_info()
+                        for auto in automobiles:
+                            auto.display_info()
                 elif(order==2):
                     automobiles.sort(key=lambda auto: auto.auto_year, reverse=True)
                     for auto in automobiles:
@@ -211,6 +221,8 @@ def main():
 
         elif option == exit_program:
             print('Program is closing.')
+            time.sleep(1) #one second delay 
+            print('Program closed successfully!')
         else:
             print('Option not available. Select another option.')
 
