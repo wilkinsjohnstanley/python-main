@@ -1,5 +1,3 @@
-import time
-
 class Automobile:
     def __init__(self, make, year, price):
         self.auto_make=make
@@ -36,6 +34,9 @@ class Car(Automobile):
         self.auto_doors=doors
     def get_doors(self):
         return self.auto_doors
+ 
+    def display_info(self):
+        print(f"{self.auto_make}\n Year: {self.auto_year}\n Price: {self.auto_price}\n Doors: {self.auto_doors}\n")
 
 
 class Truck(Automobile):
@@ -46,6 +47,8 @@ class Truck(Automobile):
         self.auto_drive_type=drive_type
     def get_drive_type(self):
         return self.auto_drive_type
+    def display_info(self):
+        print(f"{self.auto_make}\n Year: {self.auto_year}\n Price: {self.auto_price}\n Drivetrain: {self.auto_drive_type}\n")
 
 class SUV(Automobile):
     def __init__(self, make, year, price, pass_cap):
@@ -55,6 +58,8 @@ class SUV(Automobile):
         self.auto_pass_cap=pass_cap
     def get_pass_cap(self):
         return self.auto_pass_cap
+    def display_info(self):
+        print(f"{self.auto_make}\n Year: {self.auto_year}\n Price: {self.auto_price}\n Capacity: {self.auto_pass_cap}\n")
 
 #Main menu
 def show_menu():
@@ -123,7 +128,7 @@ def main():
             answer=int(input("Press '1' to add, Press '2' to remove: "))
             if(answer==1):
                 answer2=int(input("Press '1' to add a Car, Press '2' to add a Truck, or Press '3' to add a SUV: "))
-                if(answer==1):
+                if(answer2==1):
                     make=input('Enter the manufacturer: ')
                     year=int(input('Enter the year: '))
                     price=int(input('Enter the price: $'))
@@ -131,10 +136,10 @@ def main():
 
                     car4=Car(make, year, price, doors)
                     automobiles.append(car4)
-                    time.sleep(1) #one second delay 
+                  
                     print(f"New car successfully added to the inventory.")
 
-                elif(answer==2):
+                elif(answer2==2):
                     make=input('Enter the manufacturer: ')
                     year=int(input('Enter the year: '))
                     price=int(input('Enter the price: $'))
@@ -142,10 +147,10 @@ def main():
 
                     truck4=Truck(make, year, price, cap)
                     automobiles.append(truck4)
-                    time.sleep(1) #one second delay 
+                    
                     print(f"New truck successfully added to the inventory.")
 
-                elif(answer==3):
+                elif(answer2==3):
                     make=input('Enter the manufacturer: ')
                     year=int(input('Enter the year: '))
                     price=int(input('Enter the price: $'))
@@ -153,7 +158,7 @@ def main():
 
                     suv4=SUV(make, year, price, cap)
                     automobiles.append(suv4)
-                    time.sleep(1) #one second delay 
+                    
                     print(f"New SUV successfully added to the inventory.")
                     for auto in automobiles:
                         auto.display_info()
@@ -169,14 +174,14 @@ def main():
                 index = int(input("Enter the index of the car to remove: ")) - 1
                 if 0 <= index < len(automobiles):
                     del automobiles[index]
-                    time.sleep(1)
+                 
                     print("Car removed successfully!")
                     for auto in automobiles:
                         auto.display_info()
                 else:
                     print("Invalid index!")
             else:
-                print("No cars to remove!")
+                print("Option unavailable: you have been returned to the main menu. ")
                         
 
                         
@@ -184,13 +189,12 @@ def main():
             answer_about_filter=int(input("Press '1' to filter cars by year, Press '2' to filter cars by price: "))
             if(answer_about_filter==1):
                 # Sorting automobiles by year
-                order=int(input("Press '1' for oldest first, Press '2' to newest first: "))
+                order=int(input("Press '1' for oldest first, Press '2' for newest first: "))
                 if(order==1):
                     automobiles.sort(key=lambda auto: auto.auto_year)
                     for auto in automobiles:
                         auto.display_info()
-                        for auto in automobiles:
-                            auto.display_info()
+                        
                 elif(order==2):
                     automobiles.sort(key=lambda auto: auto.auto_year, reverse=True)
                     for auto in automobiles:
@@ -220,8 +224,8 @@ def main():
            
 
         elif option == exit_program:
-            print('Program is closing.')
-            time.sleep(1) #one second delay 
+          
+            
             print('Program closed successfully!')
         else:
             print('Option not available. Select another option.')
