@@ -145,7 +145,7 @@ def main():
                     truck=Truck(make, year, price, drive_type)
                     automobiles.append(truck)
                     
-                    print(f"New truck successfully added to the inventory.")
+                    print("New truck successfully added to the inventory.")
 
                 elif(answer2==3):
                     make=input('Enter the manufacturer: ')
@@ -156,7 +156,7 @@ def main():
                     suv=SUV(make, year, price, cap)
                     automobiles.append(suv)
                     
-                    print(f"New SUV successfully added to the inventory.")
+                    print("New SUV successfully added to the inventory.")
                     for auto in automobiles:
                         auto.display_info()
                 else:
