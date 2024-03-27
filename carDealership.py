@@ -5,8 +5,8 @@ class Automobile:
         self.auto_price=price
 
     #display information
-    def display_info(self):
-        print(f"{self.auto_make} {self.auto_year} {self.auto_price}")
+    # def display_info(self):
+    #     print(f"{self.auto_make} {self.auto_year} {self.auto_price}")
 
     def set_make(self, make):
         self.auto_make=make
@@ -143,7 +143,7 @@ def main():
                     make=input('Enter the manufacturer: ')
                     year=int(input('Enter the year: '))
                     price=int(input('Enter the price: $'))
-                    drive_type=int(input('Enter the drive type(4WD, FWD, RWD): '))
+                    drive_type=input('Enter the drive type(4WD, FWD, RWD): ')
 
                     truck=Truck(make, year, price, cap)
                     automobiles.append(truck)
