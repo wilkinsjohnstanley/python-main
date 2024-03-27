@@ -1,3 +1,5 @@
+import time
+
 class Automobile:
     def __init__(self, make, year, price):
         self.auto_make=make
@@ -124,27 +126,35 @@ def main():
                 if(answer==1):
                     make=input('Enter the manufacturer: ')
                     year=int(input('Enter the year: '))
-                    price=float(input('Enter the price: $'))
+                    price=int(input('Enter the price: $'))
                     doors=int(input('Enter the number of doors: '))
 
                     car4=Car(make, year, price, doors)
                     automobiles.append(car4)
+                    time.sleep(2) #two second delay 
+                    print(f"New car successfully added to the inventory.")
+
                 elif(answer==2):
                     make=input('Enter the manufacturer: ')
                     year=int(input('Enter the year: '))
-                    price=float(input('Enter the price: $'))
+                    price=int(input('Enter the price: $'))
                     drive_type=int(input('Enter the drive type(4WD, FWD, RWD): '))
 
                     truck4=Truck(make, year, price, cap)
                     automobiles.append(truck4)
+                    time.sleep(2) #two second delay 
+                    print(f"New truck successfully added to the inventory.")
+
                 elif(answer==3):
                     make=input('Enter the manufacturer: ')
                     year=int(input('Enter the year: '))
-                    price=float(input('Enter the price: $'))
+                    price=int(input('Enter the price: $'))
                     cap=int(input('Enter the passenger capacity: '))
 
                     suv4=SUV(make, year, price, cap)
                     automobiles.append(suv4)
+                    time.sleep(2) #two second delay 
+                    print(f"New SUV successfully added to the inventory.")
                 else:
                     print("Option unavailable: you have been returned to the main menu. ")
                     
@@ -154,8 +164,10 @@ def main():
                 for auto in automobiles:
                     if(auto.auto_make==delete_make and auto.auto_year==delete_year):
                         automobiles.remove(auto)
+                        time.sleep(2)
                         print(f"You have successfully removed {auto} from the inventory. ")
                     else:
+                        time.sleep(2)
                         print("That car isn't in our inventory: you have been returned to the main menu")
                         
 
