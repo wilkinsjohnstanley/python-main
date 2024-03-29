@@ -4,6 +4,9 @@ class Person:
         self.age=age
         self.university=university.title()
         self.degree=degree.capitalize()
+    @classmethod
+    def from_csv_line(cls, line: str) -> "Person":
+        return cls(*line.strip().split(","))
 
 with open("people.csv", "r") as file:
     lines = file.readlines()
