@@ -1,18 +1,25 @@
-def binary_search(arr, target):
-    low, high = 0, len(arr) - 1
-    
-    while low <= high:
-        mid = (low + high) // 2
-        if arr[mid] == target:
-            return mid
-        elif arr[mid] < target:
-            low = mid + 1
-        else:
-            high = mid - 1
-    
-    return -1  # Target not found
+def binary_search(list, target):
+    first = 0
+    last = len(list)-1
 
-# Example usage:
-arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-target = 7
-print(binary_search(arr, target))  # Output: 6 (index of target in arr)
+    
+    while first <= last:
+        midpoint = (first + last) // 2
+        #make sure midpoint isn't our target
+        if list[midpoint] == target:
+            return midpoint #best case we are done 
+        elif list[midpoint] < target:
+            first = midpoint + 1
+        else:
+            last = midpoint - 1
+    
+    return None  # Target not found
+def verify(index):
+    if index is not None:
+        print("Target found at index: ", index)
+    else:
+        print("Target not found in list")
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+result = binary_search(numbers, 8)
+verify(result)
