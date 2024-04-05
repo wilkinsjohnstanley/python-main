@@ -1,5 +1,7 @@
 import time 
 import csv
+import threading
+import random
 
 class Organization:
     def __init__(self, index, org_id, name, website, country, description, founded, industry, number_of_employees):
@@ -38,54 +40,53 @@ class Algorithm:
     # Display method for use by the leaderboard
     def display_info(self):
         print(f"{self.nameOfAlgorithm}\n Time complexity: {self.timeComplexity}\n Time needed to Compute: {self.computationTime}\n")
-
+# Define timeComplexity globally
+# timeComplexity = ""
 # Counting Sort
-def counting_sort(arr):
+def counting_sort(arr, stop_event):
     max_val = max(arr)
     count = [0] * (max_val + 1)
     sorted_arr = []
+    timeComplexity = "Linear"  # Define timeComplexity locally
 
     for num in arr:
         count[num] += 1
 
     for i in range(max_val + 1):
+        if stop_event.is_set():
+            return  # If stop event is set, return without completing the sort
         if count[i] > 0:
             sorted_arr.extend([i] * count[i])
 
     return sorted_arr
 
 # Merge Sort
-def merge_sort(arr):
-    if len(arr) <= 1:
-        return arr
+def merge_sort(arr, stop_event):
+    timeComplexity = "Logarithmic"  # Define timeComplexity locally
 
-    mid = len(arr) // 2
-    left_half = arr[:mid]
-    right_half = arr[mid:]
 
-    left_half = merge_sort(left_half)
-    right_half = merge_sort(right_half)
+    n = len(arr)
+    width = 1
+    while width < n:
+        left = 0
+        while left < n:
+            mid = left + width
+            right = min(left + 2 * width, n)
+            if mid < right:
+                arr[left:right] = merge_sort(arr[left:mid], arr[mid:right])
+            left += 2 * width
+        width *= 2
 
-    return merge(left_half, right_half)
+    return arr
 
-def merge(left, right):
-    result = []
-    left_idx, right_idx = 0, 0
 
-    while left_idx < len(left) and right_idx < len(right):
-        if left[left_idx] < right[right_idx]:
-            result.append(left[left_idx])
-            left_idx += 1
-        else:
-            result.append(right[right_idx])
-            right_idx += 1
 
-    result.extend(left[left_idx:])
-    result.extend(right[right_idx:])
-    return result
 
 # Bubble Sort
-def bubble_sort(arr):
+def bubble_sort(arr, stop_event):
+    timeComplexity = "Polynomial"  # Define timeComplexity locally
+    if stop_event.is_set():
+        return
     n = len(arr)
     for i in range(n):
         for j in range(0, n-i-1):
@@ -93,17 +94,22 @@ def bubble_sort(arr):
                 arr[j], arr[j+1] = arr[j+1], arr[j]
     return arr
 
+
 # Bogo Sort
 def is_sorted(arr):
     for i in range(len(arr)-1):
         if arr[i] > arr[i+1]:
             return False
     return True
-
-def bogo_sort(arr):
+def bogo_sort(arr, stop_event):
+    timeComplexity = "Factorial"  # Define timeComplexity locally
     while not is_sorted(arr):
+        if stop_event.is_set():
+            return
         random.shuffle(arr)
     return arr
+
+
 
 # Read data from CSV file
 org_list = []
@@ -115,23 +121,25 @@ with open("organizations-100000.csv", "r", newline="") as file:
 
 # Test how fast the algorithm is!
 def test_algorithm(sort_function, name):
+    stop_event = threading.Event()
+    stopwatch_thread = threading.Thread(target=stopwatch, args=(stop_event,))
+    stopwatch_thread.start()
     start_time = time.perf_counter()
-    sorted_org_list = sort_function([org.number_of_employees for org in org_list])
+    sorted_org_list = sort_function([org.number_of_employees for org in org_list], stop_event)
     end_time = time.perf_counter()
+    stop_event.set()  # Signal the stopwatch thread to stop
     computation_time = end_time - start_time
-    if sort_function == counting_sort:
-        time_complexity = "Linear"
-    elif sort_function == merge_sort:
-        time_complexity = "Logarithmic"
-    elif sort_function == bubble_sort:
-        time_complexity = "Quadratic"
-    elif sort_function == bogo_sort:
-        time_complexity = "Varies"
-    else:
-        time_complexity = "Unknown"
     print(f"{name} - Computation Time: {computation_time:.4f} seconds")
-    return Algorithm(name, time_complexity, computation_time)
+    return Algorithm(name, timeComplexity, computation_time)
 
+# Stopwatch function
+def stopwatch(stop_event):
+    start_time = time.perf_counter()
+    while not stop_event.is_set():
+        current_time = time.perf_counter()
+        elapsed_time = current_time - start_time
+        print(f"\rElapsed Time: {elapsed_time:.2f} seconds", end="")
+        time.sleep(0.1)
 
 def main():
     # Create a list to store algorithm objects
@@ -154,11 +162,9 @@ def main():
                 algorithms.sort(key=lambda alg: alg.computationTime)
                 for alg in algorithms:
                     alg.display_info()
-                    time.sleep(1)
             else:
                 print("No algorithms have been tested yet.")
                 time.sleep(1)
-            
         elif option == 2:
             print('**** Choose an algorithm to test! ****')
             print('\t 1. Counting Sort')
@@ -169,16 +175,16 @@ def main():
 
             if test_choice == 1:
                 algorithms.append(test_algorithm(counting_sort, "Counting Sort"))
-                time.sleep(1)
+                time.sleep(3)
             elif test_choice == 2:
                 algorithms.append(test_algorithm(merge_sort, "Merge Sort"))
-                time.sleep(1)
+                time.sleep(3)
             elif test_choice == 3:
                 algorithms.append(test_algorithm(bubble_sort, "Bubble Sort"))
-                time.sleep(1)
+                time.sleep(3)
             elif test_choice == 4:
                 algorithms.append(test_algorithm(bogo_sort, "Bogo Sort"))
-                time.sleep(1)
+                time.sleep(3)
             else:
                 print("Invalid choice")
         elif option == 3:
