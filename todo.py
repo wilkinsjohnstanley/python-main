@@ -49,5 +49,5 @@ def main():
         else:
             print("Invalid choice. Please choose again.")
 
-if __name__ == "__main__":
-    main()
+
+main()
