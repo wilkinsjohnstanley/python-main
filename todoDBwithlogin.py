@@ -9,6 +9,11 @@ import time
 #     def __init__(self, username, password):
 #         super().__init__(username, password)
 # Main Menu
+def login_menu():
+    print("\nLogin Menu:")
+    print("1. Login")
+    print("2. Register")
+
 def show_menu():
     print("\nTo-do List Menu:")
     print("1. Add task")
@@ -106,7 +111,7 @@ def load_tasks():
     finally:
         if conn:
             conn.close()
-    return todo_list
+    return loaded_tasks
 
 def main():
     todo_list = []
