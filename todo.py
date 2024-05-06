@@ -19,7 +19,7 @@ class User:
     def get_password(self):
         return self.password
 
-class Online(User):
+class John(User):
     def __init__(self, username, password, loggedIn):
         super().__init__(username, password)
         self.loggedIn = loggedIn
@@ -70,15 +70,16 @@ def show_tasks(todo_list):
 def main():
     loggedIn = False
 
+    # Initialize John
+    john = John("John", "abc123", False)
+
     while not loggedIn:
-        username = input("Enter username: ")
-        password = input("Enter password: ")
+        name = input("Enter username: ")
+        word = input("Enter password: ")
 
-
-
-        if username and password:
+        if name == john.get_username() and word == john.get_password():
             loggedIn = True
-            onlineUser = Online(username, password, loggedIn)
+            onlineUser = Online(name, word, loggedIn)
         else:
             print("Invalid username or password. Please try again.")
 
