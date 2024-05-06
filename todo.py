@@ -35,12 +35,12 @@ def add_task(todo_list):
     task = input("Enter the task: ")
     todo_list.append(task)
     print("Task added successfully!")
-    time.sleep(1)
+    time.sleep(3)
 
 def remove_task(todo_list):
     if len(todo_list) == 0:
         print("No tasks to remove.")
-        time.sleep(1)
+        time.sleep(3)
         return
 
     print("Current tasks:")
@@ -51,21 +51,21 @@ def remove_task(todo_list):
     if 0 <= task_index < len(todo_list):
         removed_task = todo_list.pop(task_index)
         print(f"Task '{removed_task}' removed successfully!")
-        time.sleep(1)
+        time.sleep(3)
     else:
         print("Invalid task number.")
-        time.sleep(1)
+        time.sleep(3)
 
 def show_tasks(todo_list):
     if len(todo_list) == 0:
         print("No tasks.")
-        time.sleep(1)
+        time.sleep(3)
         return
 
     print("Tasks:")
     for index, task in enumerate(todo_list):
         print(f"{index + 1}. {task}")
-        time.sleep(1)
+    time.sleep(3)
 
 def main():
     loggedIn = False
@@ -98,10 +98,10 @@ def main():
             show_tasks(todo_list)
         elif choice == "4":
             print("Exiting...")
-            time.sleep(1)
+            time.sleep(3)
             break
         else:
             print("Invalid choice. Please choose again.")
-            time.sleep(1)
+            time.sleep(3)
 
 main()
