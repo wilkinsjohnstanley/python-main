@@ -79,9 +79,11 @@ def main():
 
         if name == john.get_username() and word == john.get_password():
             loggedIn = True
-            onlineUser = Online(name, word, loggedIn)
         else:
-            print("Invalid username or password. Please try again.")
+            print("Forgot your password?")
+            new_password = input("Enter your new password: ")
+            john.set_password(new_password)
+            print("Password changed successfully!")
 
     todo_list = []
     while True:
